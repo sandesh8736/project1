@@ -3,7 +3,7 @@ import os
 
 client = InferenceClient(
     provider="auto",  # lets HF pick a provider that's currently serving this model for free
-  
+    api_key=os.environ.get("HF_TOKEN"),
 )
 
 response = client.chat.completions.create(
