@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# Node
+node_modules/
+dist/
+build/
+
+# Uploaded files
+uploads/
+
+# ChromaDB
+chroma_db/
+*.db
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
