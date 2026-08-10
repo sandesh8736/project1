@@ -17,11 +17,16 @@ build/
 uploads/
 
 # ChromaDB
+backend/vector_store
 chroma_db/
 *.db
 
 # VS Code
 .vscode/
+
+# React
+my-app/node_modules/
+my-app/build/
 
 # OS
 .DS_Store

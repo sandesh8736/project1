@@ -36,12 +36,16 @@ async def upload_file(file: UploadFile = File(...)):
 
     # readpdf
     full_text = read_pdf(file_path) 
+    print("PDF text extracted:", len(full_text))
 
     # create chunks
     chunks = create_chunks(full_text)
+    print("Number of chunks:", len(chunks))
 
     # generate embeddings 
     embeddings = generate_embeddings(chunks)
+    print("Number of embeddings:", len(embeddings))
+    print("Embedding dimension:", len(embeddings[0]))
 
     # store embeddings 
     store_embeddings(chunks,embeddings)

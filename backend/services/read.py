@@ -2,9 +2,10 @@ from pypdf import PdfReader
 
 
 def read_pdf(file_path):
-
     reader = PdfReader(file_path)
-    total_charactes = 0;
+    total_characters = 0;
+
+    total_pages = len(reader.pages)
     full_text = ""
 
     for i in range(total_pages):
@@ -12,7 +13,7 @@ def read_pdf(file_path):
 
         if text:
 
-            full_text +=text
+            full_text += text + "\n"
 
     return full_text
            

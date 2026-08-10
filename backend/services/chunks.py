@@ -1,3 +1,4 @@
+ 
 
 def create_chunks(full_text):
     chunk_size = 1000
@@ -19,8 +20,4 @@ def create_chunks(full_text):
 
     return chunks
 
-#print("Total Chunks:",len(chunks))
-
-#for i, chunk in enumerate (chunks):
- #  print(chunk[:100])
-  #  print("-"*50)
+ 
