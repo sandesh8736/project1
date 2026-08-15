@@ -1,5 +1,12 @@
-from services.retriver import get_relevant_chunks
+from services.retriver import retrieve_chunks
 
-results = get_relevant_chunks("your test question here", k=3)
-for chunk in results:
-    print(chunk[:100], "\n---")
+
+question = "What is ergodic and mixed sourecs?"
+
+results = retrieve_chunks(
+    question,
+    k=3
+)
+
+print("Retrieved chunks:")
+print(results["documents"])

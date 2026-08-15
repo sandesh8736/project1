@@ -6,12 +6,15 @@ from services.read import read_pdf
 from services.chunks import create_chunks
 from services.embeddings import generate_embeddings
 from services.vector_store import store_embeddings
+from pydantic import BaseModel
+from services.rag import answer_question
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3001"],
+    allow_origins=["http://localhost:3000"],
+   # allow_origins=["http://localhost:3001"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -57,4 +60,19 @@ async def upload_file(file: UploadFile = File(...)):
         "total_chunks": len(chunks),
        # "status": "Embeddings stored successfully"
         
+    }
+
+class QuestionRequest(BaseModel):
+    question: str
+    
+@app.post("/ask")
+async def ask_question(request: QuestionRequest):
+
+    answer = answer_question(
+        request.question
+    )
+
+    return {
+        "question": request.question,
+        "answer": answer
     }
