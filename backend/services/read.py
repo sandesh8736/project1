@@ -1,21 +1,30 @@
-from pypdf import PdfReader 
+from pypdf import PdfReader
 
 
-def read_pdf(file_path):
-    reader = PdfReader(file_path)
-    total_characters = 0;
+class PDF_reader:
 
-    total_pages = len(reader.pages)
-    full_text = ""
+    def __init__(self, file_path):
 
-    for i in range(total_pages):
-        text = reader.pages[i].extract_text()  
+        self.file_path = file_path
 
-        if text:
+    def read_pdf(self):
 
-            full_text += text + "\n"
+        reader = PdfReader(self.file_path)
 
-    return full_text
-           
+        pages = []
 
- 
+        total_pages = len(reader.pages)
+
+        for i in range(total_pages):
+
+            text = reader.pages[i].extract_text()
+
+            if text is None:
+                text = ""
+
+            pages.append({
+                "page_number": i + 1,
+                "text": text
+            })
+
+        return pages
